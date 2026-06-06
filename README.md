@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# TaskFlow
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A fast, production-ready todo app built with React.
 
-## Available Scripts
+**Live demo → [todo-list-gamma-two-83.vercel.app](https://todo-list-gamma-two-83.vercel.app/)**
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Add, complete & delete tasks** — keyboard-friendly (press Enter to add)
+- **Priority levels** — Low / Medium / High with colour indicators
+- **Due dates** — overdue tasks highlighted, due-today flagged in amber
+- **Inline editing** — double-click any task to rename it
+- **Filter** — All / Active / Completed tabs
+- **Sort** — Newest first, Priority, Due date, A → Z
+- **Search** — instant full-text search
+- **Progress bar** — live completion percentage
+- **Clear completed** — bulk-delete finished tasks
+- **Dark mode** — syncs to OS preference, persisted across sessions
+- **Persistent storage** — tasks survive page refreshes via `localStorage`
+- **Responsive** — works on mobile and desktop
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [React 17](https://reactjs.org/)
+- Plain CSS with custom properties (no UI library)
+- Create React App
+- Deployed on [Vercel](https://vercel.com/)
 
-### `npm test`
+## Getting started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install
+npm start        # http://localhost:3000
+npm run build    # production build
+```
 
-### `npm run build`
+## Project structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+src/
+  hooks/
+    useTodos.js          # state + localStorage persistence
+  components/
+    TodoApp.js           # root container, filtering & sorting logic
+    TodoInput.js         # add-task form with priority & due date
+    TodoItem.js          # single task row with inline edit
+    TodoFilters.js       # search, filter tabs, sort select
+    TodoStats.js         # progress bar
+    Header.js            # navbar with dark-mode toggle
+    Footer.js
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The app is deployed to Vercel and auto-deploys on every push to `main`.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+© 2026 Ayyappa Swamy
