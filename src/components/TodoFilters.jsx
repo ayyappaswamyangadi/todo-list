@@ -1,10 +1,11 @@
 import React from 'react'
 
-const FILTERS = ['all', 'active', 'completed']
+const FILTERS = ['all', 'active', 'flagged', 'completed']
 
 export default function TodoFilters({
   filter, setFilter,
   sort, setSort,
+  groupBy, setGroupBy,
   search, setSearch,
   completedCount,
   onClearCompleted,
@@ -38,17 +39,31 @@ export default function TodoFilters({
           ))}
         </div>
 
-        <select
-          className="sort-select"
-          value={sort}
-          onChange={e => setSort(e.target.value)}
-          aria-label="Sort tasks"
-        >
-          <option value="created">Newest first</option>
-          <option value="priority">Priority</option>
-          <option value="due">Due date</option>
-          <option value="alpha">A → Z</option>
-        </select>
+        <div className="view-selects">
+          <select
+            className="sort-select"
+            value={groupBy}
+            onChange={e => setGroupBy(e.target.value)}
+            aria-label="Group tasks"
+          >
+            <option value="day">Group by day</option>
+            <option value="week">Group by week</option>
+            <option value="month">Group by month</option>
+            <option value="none">No grouping</option>
+          </select>
+
+          <select
+            className="sort-select"
+            value={sort}
+            onChange={e => setSort(e.target.value)}
+            aria-label="Sort tasks"
+          >
+            <option value="due">Sort by due time</option>
+            <option value="created">Newest first</option>
+            <option value="priority">Priority</option>
+            <option value="alpha">A → Z</option>
+          </select>
+        </div>
       </div>
 
       {completedCount > 0 && (

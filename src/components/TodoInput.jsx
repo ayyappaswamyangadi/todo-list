@@ -1,15 +1,16 @@
 import React, { useState, useRef } from 'react'
+import { localDateString } from '../utils/reminders'
+import TaskFields from './TaskFields'
 
-const PRIORITIES = ['low', 'medium', 'high']
+const EMPTY_FIELDS = { priority: 'medium', dueDate: '', dueTime: '', flagged: false }
 
 export default function TodoInput({ onAdd }) {
   const [text, setText] = useState('')
-  const [priority, setPriority] = useState('medium')
-  const [dueDate, setDueDate] = useState('')
+  const [fields, setFields] = useState(EMPTY_FIELDS)
   const [expanded, setExpanded] = useState(false)
   const inputRef = useRef(null)
 
-  const today = new Date().toISOString().split('T')[0]
+  const today = localDateString()
 
   const handleSubmit = (e) => {
     e && e.preventDefault()
@@ -18,10 +19,12 @@ export default function TodoInput({ onAdd }) {
       inputRef.current?.focus()
       return
     }
-    onAdd({ text: trimmed, priority, dueDate: dueDate || null })
+    const { priority, dueDate, dueTime, flagged } = fields
+    // Picking only a time means "today at that time".
+    const date = dueDate || (dueTime ? today : null)
+    onAdd({ text: trimmed, priority, dueDate: date, dueTime: dueTime || null, flagged })
     setText('')
-    setDueDate('')
-    setPriority('medium')
+    setFields(EMPTY_FIELDS)
     setExpanded(false)
     inputRef.current?.focus()
   }
@@ -45,31 +48,10 @@ export default function TodoInput({ onAdd }) {
       </div>
 
       {expanded && (
-        <div className="todo-input-extras">
-          <div className="priority-group">
-            <span className="extras-label">Priority</span>
-            {PRIORITIES.map(p => (
-              <button
-                key={p}
-                type="button"
-                className={`priority-chip priority-${p}${priority === p ? ' selected' : ''}`}
-                onClick={() => setPriority(p)}
-              >
-                {p}
-              </button>
-            ))}
-          </div>
-          <label className="date-label">
-            <span className="extras-label">Due</span>
-            <input
-              type="date"
-              className="date-input"
-              value={dueDate}
-              min={today}
-              onChange={e => setDueDate(e.target.value)}
-            />
-          </label>
-        </div>
+        <TaskFields
+          value={fields}
+          onChange={update => setFields(f => ({ ...f, ...update }))}
+        />
       )}
     </form>
   )
