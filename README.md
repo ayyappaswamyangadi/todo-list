@@ -21,17 +21,21 @@ A fast, production-ready todo app built with React.
 
 ## Tech stack
 
-- [React 17](https://reactjs.org/)
+- [React 19](https://react.dev/)
+- [Vite](https://vite.dev/) for dev server and builds
+- [Vitest](https://vitest.dev/) + React Testing Library for tests
 - Plain CSS with custom properties (no UI library)
-- Create React App
 - Deployed on [Vercel](https://vercel.com/)
 
 ## Getting started
 
 ```bash
 npm install
-npm start        # http://localhost:3000
-npm run build    # production build
+npm run dev      # http://localhost:3000
+npm test         # run tests in watch mode
+npm run lint     # lint with ESLint
+npm run build    # production build (outputs to build/)
+npm run preview  # serve the production build locally
 ```
 
 ## Project structure
@@ -41,13 +45,15 @@ src/
   hooks/
     useTodos.js          # state + localStorage persistence
   components/
-    TodoApp.js           # root container, filtering & sorting logic
-    TodoInput.js         # add-task form with priority & due date
-    TodoItem.js          # single task row with inline edit
-    TodoFilters.js       # search, filter tabs, sort select
-    TodoStats.js         # progress bar
-    Header.js            # navbar with dark-mode toggle
-    Footer.js
+    TodoApp.jsx          # root container, filtering & sorting logic
+    TodoInput.jsx        # add-task form with priority & due date
+    TodoItem.jsx         # single task row with inline edit
+    TodoFilters.jsx      # search, filter tabs, sort select
+    TodoStats.jsx        # progress bar
+    Header.jsx           # navbar with dark-mode toggle
+    Footer.jsx
+  App.jsx                # dark-mode state + layout
+  main.jsx               # entry point (createRoot)
 ```
 
 ## Deployment
