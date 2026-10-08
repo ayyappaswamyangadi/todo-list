@@ -8,10 +8,15 @@ A fast, production-ready todo app built with React.
 
 - **Add, complete & delete tasks** — keyboard-friendly (press Enter to add)
 - **Priority levels** — Low / Medium / High with colour indicators
-- **Due dates** — overdue tasks highlighted, due-today flagged in amber
+- **Due date & time** — Day / Month / Year and Hour / Minute / AM-PM dropdowns, plus Today / Tomorrow shortcuts; overdue tasks highlighted
+- **Grouped list** — tasks grouped by day, week or month of their due date (Overdue first, No date last)
+- **Edit anything** — name, priority, date, time and flag can all be changed after adding
+- **Reminders** — browser notifications when a task is due (9:00 if no time is set); ignored reminders nag again every 30 min until you finish or snooze (10 min / 1 hr / tomorrow)
+- **Flags** — flag important tasks and filter to just those
+- **Added timestamp** — every task shows when it was created
 - **Inline editing** — double-click any task to rename it
-- **Filter** — All / Active / Completed tabs
-- **Sort** — Newest first, Priority, Due date, A → Z
+- **Filter** — All / Active / Flagged / Completed tabs
+- **Sort** — Due time, Newest first, Priority, A → Z
 - **Search** — instant full-text search
 - **Progress bar** — live completion percentage
 - **Clear completed** — bulk-delete finished tasks
